@@ -22,7 +22,9 @@ class User extends Authenticatable implements JWTSubject
         'user',
         'email',
         'password',
-        'role'
+        'role',
+        'temp_stud_info_id',
+        'stud_info_id'
     ];
 
     /**
@@ -62,5 +64,9 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function tempInfo() {
+        return $this->belongsTo('App\Models\TempStudInfo');
     }
 }

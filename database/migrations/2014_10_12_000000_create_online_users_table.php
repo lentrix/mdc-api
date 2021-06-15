@@ -20,6 +20,8 @@ class CreateOnlineUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role', 20)->default('student');
+            $table->bigInteger('temp_stud_info_id')->unsigned()->nullable();
+            $table->integer('stud_info_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

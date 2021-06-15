@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TempStudInfoController;
+use App\Http\Controllers\UserController;
+use App\Models\TempStudInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class,'register']);
 
 Route::group(['middleware'=>'auth'], function() {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/info', [UserController::class,'info']);
+    Route::put('/temp-info/{tempStudInfo}', [TempStudInfoController::class, 'update']);
 });
