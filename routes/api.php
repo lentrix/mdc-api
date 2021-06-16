@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//for testing purposes online remove when not needed...
+Route::get('/test', function() {
+    $sems = \DB::table('sems')->get();
+    return response()->json($sems);
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -31,4 +37,5 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('/refresh', [AuthController::class, 'refresh']);
     Route::get('/info', [UserController::class,'info']);
     Route::put('/temp-info/{tempStudInfo}', [TempStudInfoController::class, 'update']);
+    Route::get('/basic-info', [UserController::class,'basicInfo']);
 });

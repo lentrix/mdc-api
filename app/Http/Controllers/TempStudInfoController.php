@@ -36,9 +36,9 @@ class TempStudInfoController extends Controller
         ],201);
     }
 
-    public function update(TempStudInfo $tempStudInfo, Request $request) {
+    public function update(TempStudInfo $tempStudInfo) {
 
-        $tempStudInfo->update($request->all());
+        $tempStudInfo->update(request()->all());
 
         return response()->json([
             'message' => 'Temporary student information updated successfully',
