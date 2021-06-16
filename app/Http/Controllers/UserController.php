@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,4 +69,15 @@ class UserController extends Controller
         ],404);
     }
 
+    public function update(User $user, Request $request) {
+        try {
+            $user->update($request->all());
+
+            return response()->json([
+                'user' => $user
+            ],202);
+        }catch(Exception $ex) {
+            return response()->json(['message'=>$ex->getMessage()], 422);
+        }
+    }
 }

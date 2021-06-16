@@ -22,6 +22,10 @@ class CreateOnlineUsersTable extends Migration
             $table->string('role', 20)->default('student');
             $table->bigInteger('temp_stud_info_id')->unsigned()->nullable();
             $table->integer('stud_info_id')->unsigned()->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

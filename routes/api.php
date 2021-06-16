@@ -38,4 +38,5 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('/info', [UserController::class,'info']);
     Route::put('/temp-info/{tempStudInfo}', [TempStudInfoController::class, 'update']);
     Route::get('/basic-info', [UserController::class,'basicInfo']);
+    Route::put('/profile/{user}', [UserController::class,'update']);
 });
